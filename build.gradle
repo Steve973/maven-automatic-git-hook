@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+group = 'org.example'
+version = '1.0.0-SNAPSHOT'
+description = 'maven-automatic-git-hook'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+task gitHookPrebuildTask(type: Exec) {
+    workingDir "${projectDir}/project-resources/scripts"
+    commandLine '/bin/bash', './git-install-hooks.sh', "${projectDir}"
+}
+
+build.dependsOn gitHookPrebuildTask
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}

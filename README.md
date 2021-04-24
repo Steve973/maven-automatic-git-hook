@@ -1,5 +1,7 @@
 # maven-automatic-git-hook
 Example project that demonstrates how to install a git hook simply and automatically.
+Although the project has "maven" in the title, I have also added a gradle build
+script that will achieve the same result.
 
 ## Motivation, Purpose, or, "Why did you feel the need to create this project?"
 Any developer (who has worked on a team) has been involved in discussions about coding
@@ -47,16 +49,22 @@ That script, in turn, ensures that [pre-commit.sh](project-resources/git/hooks/p
 is executable, and then it creates a symlink (or updates it, if it already exists) to that
 script as [${project.basedir}/.git/hooks/pre-commit](.git/hooks/pre-commit).
 
+For gradle users, running `gradle build` will invoke
+[git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh) through /bin/bash.
+
+Using either maven, or gradle, will create the symlink that ensures that the pre-commit hook
+will be run when the developer attempts to run `git commit`.
+
 ## Doing more, or, "How can I make this actually useful?"
 Now that you can see how easily we can create a git hook, and install it when a developer
-attempts to perform a maven build on the project, taking it to the next step is
+attempts to perform a build on the project, taking it to the next step is fairly
 straightforward.  Invoke your tools within the git hook shell scripts at the most
 appropriate lifecycle phase.  I will leave the mechanics of that as an exercise for the
 reader, since there are a number of tools that you might be interested in using.  Knowledge
 of how to invoke those tools, and knowledge of bash scripting will get you there without
 too much trouble.
 
-In the future, I might add the use of the google java code formatter to this example.
+In the future, I might add the use of the Google java code formatter to this example.
 
 ## Concerns, or, "What are you thinking?"
 You might say, "My favorite build tool has a plugin that will handle that!"  You may be

@@ -2,6 +2,8 @@
 
 PROJECT_BASE_DIR=${1}
 
+echo "Installing git hooks"
+
 # Ensure that the project-resources git pre-commit hook script is executable
 chmod +x ${PROJECT_BASE_DIR}/project-resources/git/hooks/pre-commit.sh
 
