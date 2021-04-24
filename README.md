@@ -40,7 +40,7 @@ first joins and begins to work on the project, or if a member of your team does 
 checkout on their current, or a new, development environment.
 
 ## Getting started, or, "Prove that this actually works!"
-Getting started is simple, and you already know how to do it.  Just run mvn clean install,
+Getting started is simple, and you already know how to do it.  Just run `mvn clean install`,
 or any other maven command that runs the `initialize` stage.  The maven-exec-plugin will
 tell /bin/bash to run [git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh).
 That script, in turn, ensures that [pre-commit.sh](project-resources/git/hooks/pre-commit.sh)
