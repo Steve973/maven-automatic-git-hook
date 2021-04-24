@@ -1,7 +1,7 @@
-# maven-automatic-git-hook
+# automatic-git-hook
 Example project that demonstrates how to install a git hook simply and automatically.
-Although the project has "maven" in the title, I have also added a gradle build
-script that will achieve the same result.
+I have added build configurations that will achieve the same result for both maven and
+gradle.
 
 ## Motivation, Purpose, or, "Why did you feel the need to create this project?"
 Any developer (who has worked on a team) has been involved in discussions about coding
