@@ -52,7 +52,19 @@ script as [${project.basedir}/.git/hooks/pre-commit](.git/hooks/pre-commit).
 For gradle users, running `gradle build` will invoke
 [git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh) through /bin/bash.
 
-Notice that the build output will show `Installing git hooks`, letting you know that the
+When the installation script runs, the build output will look something like this:
+```bash
+***************************************************************
+**** Installing git hooks...
+**** Making pre-commit hook script executable.
+**** Pre-commit hook script is executable. Attempting to link.
+**** Creating pre-commit link.
+**** Pre-commit link exists.
+**** Finished installing git hooks.
+***************************************************************
+```
+
+Subsequent runs will look slighty different, but these messages let you know that the
 script is, indeed, installing the git hook, as promised.
 
 Using either maven, or gradle, will create the symlink that ensures that the pre-commit hook
