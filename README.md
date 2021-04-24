@@ -66,3 +66,9 @@ to configure a build tool plugin to achieve some of these things.  Other times, 
 not want to encumber a build phase with a lengthy process of enforcing standards.  That is
 a subject for you and your team to evaluate in your particular context.  This is just one
 approach that you can utilize if it meets your needs.
+
+Github has workflows.  Many of these concerns can be solved through those workflows.
+However, you might decide that certain actions are better handled on the client side, even
+before your code ever hits the server.  You might want certain things handled independent
+of some server implementation.  This approach will apply to things that you want to handle
+on the client side.
