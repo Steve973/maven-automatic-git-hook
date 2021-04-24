@@ -39,7 +39,7 @@ that team consists only of yourself, or if your team includes any number of deve
 first joins and begins to work on the project, or if a member of your team does a fresh
 checkout on their current, or a new, development environment.
 
-## Getting started
+## Getting started, or, "Prove that this actually works!"
 Getting started is simple, and you already know how to do it.  Just run mvn clean install,
 or any other maven command that runs the `initialize` stage.  The maven-exec-plugin will
 tell /bin/bash to run [git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh).
@@ -57,3 +57,12 @@ of how to invoke those tools, and knowledge of bash scripting will get you there
 too much trouble.
 
 In the future, I might add the use of the google java code formatter to this example.
+
+## Concerns, or, "What are you thinking?"
+You might say, "My favorite build tool has a plugin that will handle that!"  You may be
+right, and that may be a better answer for you and for your team.  There is no single and
+correct answer for a given concern or requirement.  Sometimes, it may be easier or simpler
+to configure a build tool plugin to achieve some of these things.  Other times, you might
+not want to encumber a build phase with a lengthy process of enforcing standards.  That is
+a subject for you and your team to evaluate in your particular context.  This is just one
+approach that you can utilize if it meets your needs.
