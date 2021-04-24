@@ -22,10 +22,10 @@ printBannerLine
 print 'Installing git hooks...'
 
 # Ensure that the project-resources git pre-commit hook script is executable
-if [ ! \( -x "${PRE_COMMIT_HOOK_SCRIPT}" \) ] ; then
+if [ ! -x "${PRE_COMMIT_HOOK_SCRIPT}" ] ; then
   print 'Making pre-commit hook script executable.'
   chmod +x "${PRE_COMMIT_HOOK_SCRIPT}"
-  if [ ! \( -x "${PRE_COMMIT_HOOK_SCRIPT}" \) ] ; then
+  if [ ! -x "${PRE_COMMIT_HOOK_SCRIPT}" ] ; then
     print 'Pre-commit hook script is not executable. Exiting.'
     printBannerLine
     exit 1
@@ -34,10 +34,10 @@ fi
 print 'Pre-commit hook script is executable. Attempting to link.'
 
 # Install the project-resources git pre-commit hook as a symlink in the git hooks directory
-if [ ! \( -L "${PRE_COMMIT_FILE}" \) ] || [ ! \( -e "${PRE_COMMIT_FILE}" \) ] ; then
+if [ ! -L "${PRE_COMMIT_FILE}" ] ; then
   print 'Creating pre-commit link.'
   ln -sfn "${PRE_COMMIT_HOOK_SCRIPT}" "${PRE_COMMIT_FILE}"
-  if [ ! \( -L "${PRE_COMMIT_FILE}" \) ] || [ ! \( -e "${PRE_COMMIT_FILE}" \) ] ; then
+  if [ ! -L "${PRE_COMMIT_FILE}" ] ; then
     print 'Could not create pre-commit link. Exiting.'
     printBannerLine
     exit 2
