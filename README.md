@@ -42,17 +42,22 @@ first joins and begins to work on the project, or if a member of your team does 
 checkout on their current, or a new, development environment.
 
 ## Getting started, or, "Prove that this actually works!"
-Getting started is simple, and you already know how to do it.  Just run `mvn clean install`,
-or any other maven command that runs the `initialize` stage.  The maven-exec-plugin will
-tell /bin/bash to run [git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh).
-That script, in turn, ensures that [pre-commit.sh](project-resources/git/hooks/pre-commit.sh)
-is executable, and then it creates a symlink (or updates it, if it already exists) to that
-script as [${project.basedir}/.git/hooks/pre-commit](.git/hooks/pre-commit).
+Getting started is simple, and you already know how to do it.
+##### For Maven
+Just run `mvn clean install`, or any other maven command that runs the `initialize` stage.
+The maven-exec-plugin will tell /bin/bash to run
+[git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh).
+##### For Gradle
+Just run `gradle build`.  A pre-build phase will tell /bin/bash to run
+[git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh).
 
-For gradle users, running `gradle build` will invoke
-[git-install-hooks.sh](project-resources/scripts/git-install-hooks.sh) through /bin/bash.
+That script, when run either by maven or gradle, ensures that
+[pre-commit.sh](project-resources/git/hooks/pre-commit.sh)
+is executable, and then it creates a symlink (or updates it, if it already exists) to that
+script as `<git_checkout_directory>/.git/hooks/pre-commit`.
 
 When the installation script runs, the build output will look something like this:
+
 ```bash
 ***************************************************************
 **** Installing git hooks...
@@ -64,7 +69,7 @@ When the installation script runs, the build output will look something like thi
 ***************************************************************
 ```
 
-Subsequent runs will look slighty different, but these messages let you know that the
+Subsequent runs will look slightly different, but these messages let you know that the
 script is, indeed, installing the git hook, as promised.
 
 Using either maven, or gradle, will create the symlink that ensures that the pre-commit hook
@@ -84,7 +89,7 @@ too much trouble.
 
 In the future, I might add the use of the Google java code formatter to this example.
 
-## Concerns, or, "What are you thinking?"
+## Concerns, or, "What are you thinking? Why would anyone want to use this?"
 You might say, "My favorite build tool has a plugin that will handle that!"  You may be
 right, and that may be a better answer for you and for your team.  There is no single and
 correct answer for a given concern or requirement.  Sometimes, it may be easier or simpler
@@ -93,8 +98,8 @@ not want to encumber a build phase with a lengthy process of enforcing standards
 a subject for you and your team to evaluate in your particular context.  This is just one
 approach that you can utilize if it meets your needs.
 
-Github has workflows.  Many of these concerns can be solved through those workflows.
-However, you might decide that certain actions are better handled on the client side, even
-before your code ever hits the server.  You might want certain things handled independent
-of some server implementation.  This approach will apply to things that you want to handle
-on the client side.
+Github has workflows, and Gitlab has excellent CI tools.  Many of these concerns can be
+solved through those mechanisms.  However, you might decide that certain actions are better
+handled on the client side, even before your code ever hits the server.  You might want
+certain things handled independent of some server implementation.  This approach will apply
+to those things that you want to handle on the client side.
